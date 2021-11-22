@@ -1,0 +1,70 @@
+/*Dado um vetor A de n números reais, faça um programa para obter o maior e o menor elemento do vetor,
+apresente o vetor, maior e menor valor.
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include <locale.h>
+int main(){
+	setlocale(LC_ALL, "Portuguese");
+	int tam = 0,esc=0,k, naleatorio, maior=0, menor=0;
+	printf("Qual o tamanho do vetor?\n");
+	scanf("%i",&tam);
+	
+	int vetor[tam];
+	
+	printf("\nEscolha entre Digitar ou Gerar o vetor:\n(1-Digitar) (2-Gerar)\n");
+	
+	
+	do{
+		if(esc == 0){
+			scanf("%i",&esc);
+		}else if(esc != 1 && esc != 2){
+			printf("\nOpção Invalida!\nTente outra vez\n");
+			printf("\nEscolha entre Digitar ou Gerar o vetor:\n(1-Digitar) (2-Gerar)\n");
+			scanf("%i",&esc);
+		}
+	
+	}while(esc != 1 && esc != 2);
+	
+	if(esc == 1){
+		printf("\n\nDigite os valores do vetor:\n\n");
+		for(k=0;k<tam;k++){
+			printf("[%d] = ",k);
+			scanf("%i",&vetor[k]);
+			maior=vetor[k];
+			menor=vetor[k];
+		}
+	}else if(esc == 2){
+		printf("\n\nGerando os valores do vetor.\n\n");
+		for(k=0;k<tam;k++){
+			naleatorio = rand() % 10;
+			printf("[%d] = %d\n",k,naleatorio);
+			vetor[k] = naleatorio;
+			maior=vetor[k];
+			menor=vetor[k];
+		}
+	}
+	
+	printf("\n\nO vetor contém os seguintes valores:\n\n");
+	
+	
+	for(k=0;k<tam;k++){
+		printf("[%d] = %d\n",k,vetor[k]);
+		if(vetor[k]<menor){
+			menor=vetor[k];
+		}if(vetor[k]>maior){
+			maior=vetor[k];
+		}
+			
+	}
+	
+	printf("\n\nO menor número no vetor foi %d.",menor);
+	printf("\n\nO maior número no vetor foi %d.",maior);
+		
+
+	
+	
+	
+    return 0;
+}
